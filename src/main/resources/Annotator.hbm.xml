@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="uk.ac.sheffield.nlp.fever.annotation.model.Annotator" table="annotator">
+        <meta attribute="class-description">
+            Annotator
+        </meta>
+
+        <id name="id" type="long" column="id">
+            <generator class="native"/>
+        </id>
+
+
+        <property name="auth" column="auth" type="string" not-null="true" />
+
+        <property name="createdDate" column="dateadded" type="java.time.Instant" not-null="true"/>
+
+
+        <set inverse="true" name="annotations">
+            <key column="annotatorId" not-null="true" />
+            <one-to-many class="uk.ac.sheffield.nlp.fever.annotation.model.Annotation" />
+        </set>
+
+
+    </class>
+</hibernate-mapping>

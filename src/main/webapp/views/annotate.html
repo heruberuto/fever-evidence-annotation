@@ -1,0 +1,150 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 buffer">
+
+            <button ng-click="skip()" class="btn btn-outline-secondary" style="float: right;">Skip</button>
+            <h2>Evidence Labelling</h2>
+
+
+            <div ng-show="working">Loading</div>
+            <div ng-show="done">Done. Loading next workflow item</div>
+        </div>
+
+
+        </div>
+        <div class="row buffer">
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                <div class="callout left">
+                    <h4>Claim</h4>
+                </div>
+            </div>
+
+            <div class="col-sm-9 col-md-9 col-lg-9 col-xl-9">
+                <div class="ebox">
+                    {{claimText}}
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row buffer" ng-hide="hide_q1">
+                <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                    <div class="callout left">
+                        <h4>Evidence</h4>
+                    </div>
+                </div>
+    
+                <div class="col-sm-9 col-md-9 col-lg-9 col-xl-9">
+
+                    <div class="ebox" ng-repeat="ev in evidence">
+                        <div class="">({{ev.page}}) {{ev.evidenceText}}</div>
+                    </div>
+
+                </div>
+    
+            </div>
+
+        <div class="row buffer">
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                <div class="callout left">
+                    <h4>Task 1</h4>
+                </div>
+            </div>
+
+            <div class="col-sm-9 col-md-9 col-lg-9 col-xl-9">
+                <div class="">
+                    <h4>Does this evidence support or refute the claim?</h4>
+
+<!--
+                    <button class="btn btn-outline-secondary" ng-click="answer_q1(2)" >Supports</button>
+                    <button class="btn btn-outline-secondary" ng-click="answer_q1(1)" >Refutes</button>
+                    <button class="btn btn-outline-secondary" ng-click="answer_q1(0)" >Can't say for certain</button>
+
+-->
+<input class="btn btn-outline-secondary" name="label" style="display: none" type="radio" id="label-s" ng-click="answer_q1(2)" value="1" ng-class="{}"><label class="btn"  for="label-s">Supports</label>
+<input class="btn btn-outline-secondary" name="label" style="display: none"  type="radio" id="label-r" ng-click="answer_q1(1)" value="1"  ng-class="{}"><label  class="btn" for="label-r">Refutes</label>
+<input class="btn btn-outline-secondary" name="label"  style="display: none" type="radio" id="label-nei" ng-click="answer_q1(0)" value="1"  ng-class="{}" ><label class="btn"  for="label-nei">Can't say for certain</label>
+                </div>
+
+            </div>
+        </div>
+
+
+        
+
+
+        <div ng-show="q1_continue">
+
+        <div class="row buffer" ng-hide="hide_q2">
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                <div class="callout left">
+                    <h4>Task 2</h4>
+                </div>
+            </div>
+
+            <div class="col-sm-9 col-md-9 col-lg-9 col-xl-9">
+                <div class="">
+                    <h4>Select ALL the sentences that, in isolation, fully support or refute the claim</h4>
+                </div>
+            
+  
+                    <div class="evidence" ng-repeat="ev in evidence">
+                        <input ng-model="evi[ev.id]" ng-change="evi_change()" ng-disabled="noa" type="checkbox" id="chk-evi-{{ev.id}}"> <label style="display:block" for="chk-evi-{{ev.id}}"><div class="ebox">({{ev.page}}) {{ev.evidenceText}}</div></label>
+                    </div>
+
+                    <div class="evidence">
+                        <input ng-model="noa" ng-change="evi_change()"  type="checkbox" id="chk-evi-noa"> <label style="display:block"  for="chk-evi-noa"><div class="ebox"><strong>None of the above</strong></div></label>
+                    </div>
+    
+                </div>
+
+            </div>
+
+
+        <div ng-show="q3_continue || noa">
+        <div class="row buffer" ng-hide="hide_q3">
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                <div class="callout left">
+                    <h4>Task 3</h4>
+
+                </div>
+            </div>
+
+            <div class="col-sm-9 col-md-9 col-lg-9 col-xl-9">
+                <div class="">
+                    <h4>Can the claim be fully supported or refuted using a combination of the remaining evidence? Select one combination. </h4>
+
+                    <div class="evidence" ng-hide="evi[ev.id] && !noa" ng-repeat="ev in evidence">
+                        <input ng-model="partial_evi[ev.id]" ng-change="partial_evi_change()" ng-disabled="partial_noa" type="checkbox" id="chk-partial-evi-{{ev.id}}"> <label style="display:block" for="chk-partial-evi-{{ev.id}}"><div class="ebox">({{ev.page}}) {{ev.evidenceText}}</div></label>
+                    </div>
+
+                    <div class="evidence">
+                        <input ng-model="partial_noa" ng-change="partial_evi_change()"  type="checkbox" id="chk-partial-evi-noa"> <label style="display:block"  for="chk-partial-evi-noa"><div class="ebox"><strong>No combination is suitable</strong></div></label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        </div>
+        </div>
+
+        <div class="row buffer" ng-show="finish">
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                <div class="callout left">
+                    <h4>Done</h4>
+                </div>
+            </div>
+
+            <div class="col-sm-9 col-md-9 col-lg-9 col-xl-9">
+                <div class="">
+                    <button class="btn btn-outline-secondary" ng-click="save()">Save</button>
+
+                </div>
+            </div>
+        </div>
+    
+
+    </div>
+
+</div>

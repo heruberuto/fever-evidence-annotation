@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="uk.ac.sheffield.nlp.fever.annotation.model.Task" table="task">
+        <meta attribute="class-description">
+            Annotation Task
+        </meta>
+
+        <id name="id" type="long" column="id">
+            <generator class="native"/>
+        </id>
+
+
+
+
+        <set inverse="true" name="evidence">
+            <key column="taskId" not-null="true" />
+            <one-to-many class="uk.ac.sheffield.nlp.fever.annotation.model.CandidateEvidence" />
+        </set>
+
+
+
+        <many-to-one name="claim" class="uk.ac.sheffield.nlp.fever.annotation.model.Claim"
+                     column="claimId" not-null="true"/>
+
+
+
+        <property name="originalLabel" column="label" type="uk.ac.sheffield.nlp.fever.annotation.model.Label" />
+
+    </class>
+</hibernate-mapping>

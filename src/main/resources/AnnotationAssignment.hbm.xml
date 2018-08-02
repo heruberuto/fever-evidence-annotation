@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="uk.ac.sheffield.nlp.fever.annotation.model.AnnotationAssignment" table="annotation_assignment">
+        <meta attribute="class-description">
+            Annotations tasks assigned to annotators
+        </meta>
+
+        <id name="id" type="long" column="id">
+            <generator class="native"/>
+        </id>
+
+        <property name="createdDate" column="dateadded" type="java.time.Instant" not-null="true"/>
+        <property name="expiresDate" column="dateexpires" type="java.time.Instant" not-null="true"/>
+        <property name="skipped" column="skipped" type="boolean" not-null="true"/>
+
+        <many-to-one name="annotator" class="uk.ac.sheffield.nlp.fever.annotation.model.Annotator"
+                     column="annotatorId" not-null="true"/>
+        <many-to-one name="annotation" class="uk.ac.sheffield.nlp.fever.annotation.model.Annotation"
+                     column="completedAnnotationId" not-null="false"/>
+        <many-to-one name="task" class="uk.ac.sheffield.nlp.fever.annotation.model.Task"
+                     column="taskId" not-null="true"/>
+    </class>
+</hibernate-mapping>

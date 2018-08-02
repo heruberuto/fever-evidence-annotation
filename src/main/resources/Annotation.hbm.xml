@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="uk.ac.sheffield.nlp.fever.annotation.model.Annotation" table="annotation">
+        <meta attribute="class-description">
+            Annotation
+        </meta>
+
+        <id name="id" type="long" column="id">
+            <generator class="native"/>
+        </id>
+
+        <property name="createdDate" column="dateadded" type="java.time.Instant" not-null="true"/>
+
+        <many-to-one name="annotator" class="uk.ac.sheffield.nlp.fever.annotation.model.Annotator"
+                     column="annotatorId" not-null="true"/>
+
+        <many-to-one name="assignment" class="uk.ac.sheffield.nlp.fever.annotation.model.AnnotationAssignment"
+                     column="assignmentId" not-null="true"/>
+
+        <many-to-one name="task" class="uk.ac.sheffield.nlp.fever.annotation.model.Task"
+                     column="taskId" not-null="true"/>
+
+
+        <property name="label" column="label" type="uk.ac.sheffield.nlp.fever.annotation.model.Label" />
+
+
+        <set name="individualEvidence" table="individual_evidence"
+             inverse="false" lazy="true" fetch="select" cascade="all" >
+            <key>
+                <column name="annotationId" not-null="true" />
+            </key>
+            <many-to-many entity-name="uk.ac.sheffield.nlp.fever.annotation.model.CandidateEvidence">
+                <column name="evidenceId" not-null="true" />
+            </many-to-many>
+        </set>
+
+
+        <set name="partialEvidence" table="partial_evidence"
+             inverse="false" lazy="true" fetch="select" cascade="all" >
+            <key>
+                <column name="annotationId" not-null="true" />
+            </key>
+            <many-to-many entity-name="uk.ac.sheffield.nlp.fever.annotation.model.CandidateEvidence">
+                <column name="evidenceId" not-null="true" />
+            </many-to-many>
+        </set>
+
+    </class>
+</hibernate-mapping>

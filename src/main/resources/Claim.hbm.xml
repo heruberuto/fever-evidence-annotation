@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="uk.ac.sheffield.nlp.fever.annotation.model.Claim" table="claim">
+        <meta attribute="class-description">
+            Claim
+        </meta>
+
+        <id name="id" type="long" column="id">
+            <generator class="native"/>
+        </id>
+
+        <property name="originalId" column="originalId" type="long" not-null="true"/>
+        <property name="claimText" column="claimText" type="string" not-null="true"/>
+
+
+    </class>
+</hibernate-mapping>

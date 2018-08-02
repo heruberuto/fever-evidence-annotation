@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="uk.ac.sheffield.nlp.fever.annotation.model.AuthToken" table="auth_token">
+        <meta attribute="class-description">
+            Auth Token
+        </meta>
+
+        <id name="id" type="long" column="id">
+            <generator class="native"/>
+        </id>
+
+        <many-to-one name="email" class="uk.ac.sheffield.nlp.fever.annotation.model.AuthEmail"
+                     column="emailId" not-null="true"/>
+
+
+        <property name="createdDate" column="dateadded" type="java.time.Instant" not-null="true"/>
+        <property name="expiresDate" column="dateexpires" type="java.time.Instant" not-null="true"/>
+        <property name="token" column="token" type="string" not-null="true"/>
+
+
+        <set inverse="true" name="events">
+            <key column="tokenId" not-null="true" />
+            <one-to-many class="uk.ac.sheffield.nlp.fever.annotation.model.AuthEvent" />
+        </set>
+
+
+
+    </class>
+</hibernate-mapping>
