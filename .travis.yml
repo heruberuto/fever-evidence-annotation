@@ -28,7 +28,7 @@ before_install:
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
 install:
-  - cp build/libs/annotation-interface-*.war build/libs/ROOT.war
+  - cp build/libs/*.war build/libs/ROOT.war
   - docker build -t fever .
   - docker tag fever $DOCKER_PUB_ORG/fever-interface:build-$TRAVIS_BUILD_NUMBER
   - docker push $DOCKER_PUB_ORG/fever-interface:build-$TRAVIS_BUILD_NUMBER
