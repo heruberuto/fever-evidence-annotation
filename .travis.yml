@@ -9,25 +9,20 @@ sudo: true
 services:
   - docker
 
-before_script:
-  - sudo apt-get update
-  - sudo apt-get install gradle
-
-script:
-  - gradle clean build war
-
 stages:
-    - before_script
-    - script
     - before_install
     - install
     - name: after_success
       if: branch = master
 
 before_install:
+  - sudo apt-get update
+  - sudo apt-get install gradle
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
+
 install:
+  - gradle clean build war
   - cp build/libs/*.war build/libs/ROOT.war
   - docker build -t fever .
   - docker tag fever $DOCKER_PUB_ORG/fever-interface:build-$TRAVIS_BUILD_NUMBER
