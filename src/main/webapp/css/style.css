@@ -144,15 +144,17 @@ div.callout {
 }
 
 .evidence {
-    height:60px;
+    min-height:60px;
 
 }
 
 .evidence .ebox { 
-
+    margin-top:-16px;
     margin-left:24px;
 }
 
 .evidence input {
-
+    top:2px;
+    display:block;
+    position: relative;
 }
