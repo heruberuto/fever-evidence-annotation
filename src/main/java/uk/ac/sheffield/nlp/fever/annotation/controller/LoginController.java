@@ -90,15 +90,15 @@ public class LoginController {
 
         if(!ReCAPTCHAv2.isCaptchaValid(formParams.getFirst("g-recaptcha-response"))) {
             //no captcha
-            return "redirect:/login/tryagain/recaptcha";
+            return "redirect:/login";
         }
 
         if(!formParams.toSingleValueMap().containsKey("email")) {
             //no email
-            return "redirect:/login/tryagain/email";
+            return "redirect:/login";
         } else if(!AuthEmailDAOImpl.isValidEmailAddress(formParams.toSingleValueMap().get("email"))) {
             //not email
-            return "redirect:/login/tryagain/email";
+            return "redirect:/login";
         }
 
         AuthEmail email = null;

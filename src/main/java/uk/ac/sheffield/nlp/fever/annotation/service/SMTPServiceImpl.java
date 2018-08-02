@@ -32,7 +32,7 @@ public class SMTPServiceImpl implements SMTPService {
         email.setFrom(Config.getInstance().get("auth.smtp.from"));
         email.setSubject("Login Link for FEVER Annotation System");
         email.setMsg("Hi,\n\n" +
-                "Your sign in link for the FEVER Annotation System is: http://localhost:8080/login/" + token.getToken() +"" +
+                "Your sign in link for the FEVER Annotation System is: "+Config.getInstance().get("auth.url")+"/login/" + token.getToken() +"" +
                 "\n\nIt will expire in 10 minutes, must be used from the browser that you logged in from, and can only be used once." +
                 "\n\nRegards\nThe FEVER Team");
 
