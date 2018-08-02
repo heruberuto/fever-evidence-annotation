@@ -31,7 +31,7 @@ services:
      depends_on:
        - db
        - amq
-     image: j6mes/interface:latest
+     image: sheffieldnlp/fever-interface:latest
      ports:
        - "81:8080"
      restart: always
