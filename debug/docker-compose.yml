@@ -7,7 +7,7 @@ services:
        - db_data:/var/lib/mysql
      restart: always
      environment:
-       MYSQL_RANDOM_ROOT_PASSWORD:
+       MYSQL_RANDOM_ROOT_PASSWORD: "yes"
        MYSQL_DATABASE: fever
        MYSQL_USER: fever
        MYSQL_PASSWORD: $MYSQL_PASSWORD
