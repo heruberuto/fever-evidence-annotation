@@ -1,0 +1,11 @@
+language: java
+os:
+  - linux
+jdk:
+  - oraclejdk8
+sudo: true
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install gradle
+script:
+  - gradle clean build
