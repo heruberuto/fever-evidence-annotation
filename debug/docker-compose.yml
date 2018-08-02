@@ -11,7 +11,8 @@ services:
        MYSQL_DATABASE: fever
        MYSQL_USER: fever
        MYSQL_PASSWORD: $MYSQL_PASSWORD
-
+     ports:
+       - "3306:3306"
    amq:
      image: rabbitmq:3-management
      volumes:
@@ -23,6 +24,7 @@ services:
        RABBITMQ_DEFAULT_VHOST: "/"
      ports:
        - "15672:15672"
+       - "5672:5672"
    web:
      depends_on:
        - db
