@@ -149,12 +149,10 @@ div.callout {
 }
 
 .evidence .ebox { 
-    margin-top:-12px;
-    margin-left:24px;    
+
+    margin-left:24px;
 }
 
 .evidence input {
-    top:14px;
-    display:block;
-    position: relative;
+
 }
