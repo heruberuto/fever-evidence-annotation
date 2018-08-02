@@ -66,9 +66,12 @@ public class TaskController {
         AmqSetup<AnnotationRequest> setup1 = new AmqSetup<>(requestSerializer, "annotation_task_1");
         AmqSetup<AnnotationRequest> setup2 = new AmqSetup<>(requestSerializer, "annotation_task_2");
         AmqSetup<AnnotationRequest> setup3 = new AmqSetup<>(requestSerializer, "annotation_task_3");
+
+
         setup1.run(); //Don't run this in a thread
         setup2.run(); //Don't run this in a thread
         setup3.run(); //Don't run this in a thread
+
         channels[0] = setup1.getChannel();
         channels[1] = setup2.getChannel();
         channels[2] = setup3.getChannel();

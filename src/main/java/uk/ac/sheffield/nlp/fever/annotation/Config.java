@@ -23,7 +23,7 @@ public class Config {
         if(this.conf.containsKey(key)) {
             return this.conf.get(key);
         } else {
-            String prop = System.getProperty(key);
+            String prop = System.getProperty(key).trim();
             this.conf.put(key,prop);
             return prop;
         }

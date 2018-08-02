@@ -23,9 +23,14 @@ public class AmqSetup<T> implements Runnable {
     @Override
     public void run() {
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost(Config.getInstance().get("amq.host"));
-        factory.setUsername(Config.getInstance().get("amq.user"));
-        factory.setPassword(Config.getInstance().get("amq.password"));
+
+
+        //Set username and password from D-args
+        factory.setUsername(Config.getInstance().get("messaging.username"));
+        factory.setPassword(Config.getInstance().get("messaging.password"));
+        factory.setHost(Config.getInstance().get("messaging.host"));
+
+
 
         final Connection connection;
         try {
@@ -40,6 +45,14 @@ public class AmqSetup<T> implements Runnable {
 
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();
+
+
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
+            run();
         }
 
 

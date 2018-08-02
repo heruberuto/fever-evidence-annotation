@@ -12,7 +12,13 @@ ext {
 }
 
 group 'uk.ac.sheffield.nlp.fever'
-version '1.0-SNAPSHOT'
+
+if (project.hasProperty('release')) {
+    project.version = project.release
+} else {
+    project.version = '1.0-SNAPSHOT'
+}
+
 
 sourceCompatibility = 1.8
 

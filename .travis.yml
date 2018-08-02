@@ -3,9 +3,36 @@ os:
   - linux
 jdk:
   - oraclejdk8
+
 sudo: true
-before_install:
+
+services:
+  - docker
+
+before_script:
   - sudo apt-get update
   - sudo apt-get install gradle
+
 script:
-  - gradle clean build
+  - gradle clean build war
+
+stages:
+    - before_script
+    - script
+    - before_install
+    - install
+    - name: after_success
+      if: branch = master
+
+before_install:
+  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+
+install:
+  - cp build/libs/annotation-interface-*.war build/libs/ROOT.war
+  - docker build -t fever .
+  - docker tag fever $DOCKER_PUB_ORG/fever-interface:build-$TRAVIS_BUILD_NUMBER
+  - docker push $DOCKER_PUB_ORG/fever-interface:build-$TRAVIS_BUILD_NUMBER
+
+after_success:
+  - docker tag fever $DOCKER_PUB_ORG/fever-interface:latest
+  - docker push $DOCKER_PUB_ORG/fever-interface:latest
