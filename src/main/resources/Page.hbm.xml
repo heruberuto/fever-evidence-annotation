@@ -6,7 +6,7 @@
 <hibernate-mapping>
     <class name="uk.ac.sheffield.nlp.fever.annotation.model.Page" table="page">
         <meta attribute="class-description">
-            Annotation Task
+            Page
         </meta>
 
         <id name="id" type="long" column="id">
@@ -14,7 +14,7 @@
         </id>
 
 
-        <property chara name="page" column="page" type="string" length="128" unique="true" />
+        <property name="page" column="page" type="string" length="220" unique="true" />
         <property name="text" column="pageText" type="text"  />
 
     </class>
