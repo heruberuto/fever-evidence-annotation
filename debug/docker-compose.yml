@@ -39,11 +39,11 @@ services:
        timeout: 10s
        retries: 3
      environment:
-       HIBERNATE_URL: jdbc:mysql://db/fever
+       HIBERNATE_URL: jdbc:mysql://db/fever?characterEncoding=utf-8
        HIBERNATE_USERNAME: fever
        HIBERNATE_PASSWORD: $MYSQL_PASSWORD
 
-       CATALINA_OPTS: "-Dauth.url=$AUTH_URL -Dhibernate.url=jdbc:mysql://db/fever -Dhibernate.username=fever -Dhibernate.password=$MYSQL_PASSWORD -Dmessaging.username=fever -Dmessaging.password=$RABBITMQ_PASSWORD -Dmessaging.host=amq -Drecaptcha.key=$RECAPTCHA_KEY -Dauth.smtp.username=$SMTP_USERNAME -Dauth.smtp.password=$SMTP_PASSWORD -Dauth.smtp.from=$SMTP_FROM"
+       CATALINA_OPTS: "-Dauth.url=$AUTH_URL -Dhibernate.url=jdbc:mysql://db/fever?characterEncoding=utf-8 -Dhibernate.username=fever -Dhibernate.password=$MYSQL_PASSWORD -Dmessaging.username=fever -Dmessaging.password=$RABBITMQ_PASSWORD -Dmessaging.host=amq -Drecaptcha.key=$RECAPTCHA_KEY -Dauth.smtp.username=$SMTP_USERNAME -Dauth.smtp.password=$SMTP_PASSWORD -Dauth.smtp.from=$SMTP_FROM"
 
 volumes:
     db_data:

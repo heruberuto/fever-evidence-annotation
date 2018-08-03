@@ -41,13 +41,20 @@ public class PageDAOImpl extends AbstractDAO implements PageDAO {
 
         Root<Page> root = query.from(Page.class);
 
-        Page result = session.createQuery(query.where(
-                builder.equal(root.get("page"),name)
+        try {
+            Page result = session.createQuery(query.where(
+                    builder.equal(root.get("page"), name)
             ).select(root)).getSingleResult();
 
-        session.close();
+            session.close();
 
-        return result;
+
+            return result;
+        }
+        catch (javax.persistence.NoResultException ex) {
+            System.out.println(ex);
+            return null;
+        }
     }
 
     @Override
