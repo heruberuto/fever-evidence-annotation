@@ -36,7 +36,7 @@
                 <prop key="connection.autoReconnect">true</prop>
                 <prop key="connection.autoReconnectForPools">true</prop>
                 <prop key="connection.is-connection-validation-required">true</prop>
-                <!--<prop key="hibernate.connection.useUnicode">true</prop>-->
+                <prop key="verifyServerCertificate">false</prop>                <!--<prop key="hibernate.connection.useUnicode">true</prop>-->
             </props>
         </property>
 

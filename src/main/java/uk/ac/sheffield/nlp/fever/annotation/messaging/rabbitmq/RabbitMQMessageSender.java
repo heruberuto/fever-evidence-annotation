@@ -26,9 +26,9 @@ public class RabbitMQMessageSender<T> implements MessageSender<T> {
 
 
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost(Config.getInstance().get("amq.host"));
-        factory.setUsername(Config.getInstance().get("amq.user"));
-        factory.setPassword(Config.getInstance().get("amq.password"));
+        factory.setHost(Config.getInstance().get("messaging.host"));
+        factory.setUsername(Config.getInstance().get("messaging.username"));
+        factory.setPassword(Config.getInstance().get("messaging.password"));
 
         final Connection connection;
         try {
