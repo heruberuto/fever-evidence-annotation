@@ -101,7 +101,7 @@ public class Load {
 
                 sender1.send(req);
                 sender2.send(req);
-                sender3.send(req);
+                //sender3.send(req);
 
 
                 if(i++%100 == 0) {
