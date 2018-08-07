@@ -151,7 +151,7 @@
 
                 <h3>Consent</h3>
 
-                <p>By logging into this system. You are acknowledge the following: </p>
+                <p>By logging into this system. You acknowledge the following: </p>
                 <ul>
                     <li>I have read and understood the project information provided on this page</li>
                     <li>I have been given the opportunity to ask questions about the project and
