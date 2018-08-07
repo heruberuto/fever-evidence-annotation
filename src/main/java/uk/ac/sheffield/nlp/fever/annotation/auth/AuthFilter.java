@@ -7,6 +7,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import uk.ac.sheffield.nlp.fever.annotation.Config;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -69,7 +70,7 @@ public class AuthFilter implements Filter {
                 }
             });
 
-            res.sendRedirect("/login");
+            res.sendRedirect(Config.getInstance().get("auth.url")+"/login");
             return;
 
         } else {
