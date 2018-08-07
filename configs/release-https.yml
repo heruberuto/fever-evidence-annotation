@@ -1,0 +1,57 @@
+version: '3.3'
+
+services:
+   db:
+     image: mysql:5.7
+     volumes:
+       - db_data:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+       MYSQL_DATABASE: fever
+       MYSQL_USER: fever
+       MYSQL_PASSWORD: $MYSQL_PASSWORD
+
+   amq:
+     image: rabbitmq:3-management
+     volumes:
+       - queue_data:/var/lib/rabbitmq
+     restart: always
+     environment:
+       RABBITMQ_DEFAULT_USER: fever
+       RABBITMQ_DEFAULT_PASS: $RABBITMQ_PASSWORD
+       RABBITMQ_DEFAULT_VHOST: "/"
+     ports:
+       - "15672:15672"
+   web:
+     depends_on:
+       - db
+       - amq
+     image: sheffieldnlp/fever-interface:latest
+     restart: always
+     environment:
+       HIBERNATE_URL: jdbc:mysql://db/fever?characterEncoding=utf-8
+       HIBERNATE_USERNAME: fever
+       HIBERNATE_PASSWORD: $MYSQL_PASSWORD
+       CATALINA_OPTS: "-Dauth.url=$AUTH_URL -Dhibernate.url=jdbc:mysql://db/fever?characterEncoding=utf-8 -Dhibernate.username=fever -Dhibernate.password=$MYSQL_PASSWORD -Dmessaging.username=fever -Dmessaging.password=$RABBITMQ_PASSWORD -Dmessaging.host=amq -Drecaptcha.key=$RECAPTCHA_KEY -Dauth.smtp.username=$SMTP_USERNAME -Dauth.smtp.password=$SMTP_PASSWORD -Dauth.smtp.from=$SMTP_FROM"
+   proxy:
+      depends_on:
+        - web
+      image: j6mes/reverse-proxy:latest
+      ports:
+        - "80:80"
+        - "443:443"
+      restart: always
+      environment:
+        TARGET_URL: "web"
+        TARGET_PORT: 8080
+        LISTEN_PORT: 80
+        LISTEN_PORT_SSL: 443
+      volumes:
+        - $CERTS_DIR:/etc/nginx/certs/
+
+volumes:
+    db_data:
+    queue_data:
+
+
