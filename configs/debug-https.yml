@@ -17,6 +17,7 @@ services:
      image: rabbitmq:3-management
      volumes:
        - queue_data:/var/lib/rabbitmq
+     hostname: amq
      restart: always
      environment:
        RABBITMQ_DEFAULT_USER: fever
@@ -60,7 +61,7 @@ services:
         LISTEN_PORT_SSL: 443
       volumes:
         - $CERTS_DIR:/etc/nginx/certs/
-        
+
 volumes:
     db_data:
     queue_data:

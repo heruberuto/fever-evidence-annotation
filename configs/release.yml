@@ -17,6 +17,7 @@ services:
      volumes:
        - queue_data:/var/lib/rabbitmq
      restart: always
+     hostname: amq
      environment:
        RABBITMQ_DEFAULT_USER: fever
        RABBITMQ_DEFAULT_PASS: $RABBITMQ_PASSWORD
