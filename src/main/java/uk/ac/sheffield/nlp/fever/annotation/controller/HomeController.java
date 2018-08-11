@@ -14,4 +14,11 @@ public class HomeController {
 
         return new ModelAndView("home");
     }
+
+    @RequestMapping(value = "/consent", method = RequestMethod.GET,
+            produces = MediaType.TEXT_HTML_VALUE)
+    public ModelAndView getConsent() {
+
+        return new ModelAndView("consent");
+    }
 }

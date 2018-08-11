@@ -39,7 +39,7 @@
                 <p>
                     We are looking for volunteers to help grow the FEVER dataset by labelling new evidence identified from the shared task.
                     You can help as much or as little as you wish by providing your judgement to the suitability of evidence for a claim.
-                    Each evidence labelling task should approximately one minute and you are free to do as few or as many tasks as you wish.
+                    Each evidence labelling task should take approximately one minute and you are free to do as few or as many tasks as you wish.
                 </p>
                 <p>
                     This project has received ethical approval from The University of Sheffield (reference 21406). You are required to read the following information:
@@ -132,13 +132,13 @@
         According to data protection legislation, we are required to inform you that the legal basis we
         are applying in order to process your personal data is that ‘processing is necessary for the
         performance of a task carried out in the public interest’ (Article 6(1)(e)). Further information
-        can be found in the University’s Privacy Notice
+        can be found in the University’s Privacy Notice:
                     <a href="https://www.sheffield.ac.uk/govern/data-protection/privacy/general">https://www.sheffield.ac.uk/govern/data-protection/privacy/general</a>
                 </p>
                 <p>
         The University of Sheffield will act as the Data Controller for this study. This means that the
         University is responsible for looking after your information and using it properly. Any
-        enquiries related to the use of your data are addressed via the and the University’s Privacy
+        enquiries related to the use of your data are addressed via the University’s Privacy
         Statement which can be found here:
 
                     <a href="https://www.sheffield.ac.uk/govern/data-protection/privacy/general">https://www.sheffield.ac.uk/govern/data-protection/privacy/general</a>
@@ -151,20 +151,20 @@
 
                 <h3>Consent</h3>
 
-                <p>By logging into this system. You acknowledge the following: </p>
+                <p>By logging into this system, you acknowledge the following: </p>
                 <ul>
                     <li>I have read and understood the project information provided on this page</li>
                     <li>I have been given the opportunity to ask questions about the project and
                         understand that questions can be asked at any time by email</li>
                     <li>I understand that taking part in the project will include annotating evidence using
-                        this online system and agree to participate.</li>
+                        this online system and agree to participate</li>
                     <li>I understand that my taking part is voluntary and that I can withdraw from the study
                         by closing my web browser and that I do not have to give any reasons for why I no
                         longer want to take part and there will be no adverse consequences if I choose to
-                        withdraw.</li>
+                        withdraw</li>
                     <li>I understand that the information I provide in the form of data annotations will be
                         anonymized and may be published publicly under a Creative Commons 4.0 License and
-                        give my permission for this.</li>
+                        give my permission for this</li>
                 </ul>
             </div>
         </div>
