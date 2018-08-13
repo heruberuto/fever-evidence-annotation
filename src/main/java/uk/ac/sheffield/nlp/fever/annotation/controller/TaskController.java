@@ -183,7 +183,7 @@ public class TaskController {
         annotationTask.setClaimId(task.getClaim().getId());
         annotationTask.setClaimText(task.getClaim().getClaimText());
         annotationTask.setEvidence(resolvedEvidence);
-
+        annotationTask.setOriginalPage(task.getClaim().getOriginalPage());
 
 
 

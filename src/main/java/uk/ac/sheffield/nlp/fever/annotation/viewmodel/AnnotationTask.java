@@ -9,7 +9,7 @@ public class AnnotationTask {
     private long claimId;
     private String claimText;
     private Set<ResolvedCandidateEvidence> evidence;
-
+    private String originalPage;
 
 
 
@@ -35,5 +35,14 @@ public class AnnotationTask {
 
     public void setClaimId(long claimId) {
         this.claimId = claimId;
+    }
+
+
+    public String getOriginalPage() {
+        return originalPage;
+    }
+
+    public void setOriginalPage(String originalPage) {
+        this.originalPage = originalPage;
     }
 }

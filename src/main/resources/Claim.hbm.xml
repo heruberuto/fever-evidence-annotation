@@ -16,6 +16,10 @@
         <property name="originalId" column="originalId" type="long" not-null="true"/>
         <property name="claimText" column="claimText" type="string" not-null="true"/>
 
+        <property name="originalPage" type="string">
+            <column name="originalPage" not-null="false" default="'page_name'"/>
+        </property>
+
 
     </class>
 </hibernate-mapping>

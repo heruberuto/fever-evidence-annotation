@@ -150,6 +150,7 @@ app.controller("AnnotateController",function($rootScope,$route, $scope,$http,ann
     $scope.evi = {};
     $scope.partial_evi = {};
     $scope.q3_finish = false;
+    $scope.originalPage = ""
 
 
     $scope.evi_change = function() {
@@ -210,6 +211,7 @@ app.controller("AnnotateController",function($rootScope,$route, $scope,$http,ann
             $scope.claimId = task.claimId;
             $scope.claimText = task.claimText;
             $scope.evidence = task.evidence;
+            $scope.originalPage = task.originalPage;
 
             angular.forEach($scope.evidence, function(value, key) {
                 $scope.evi[value.id.toString()] = false;

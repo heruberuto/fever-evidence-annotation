@@ -4,6 +4,7 @@ public class Claim {
     private long id;
     private long originalId;
     private String claimText;
+    private String originalPage;
 
     public Claim() {
 
@@ -31,5 +32,13 @@ public class Claim {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getOriginalPage() {
+        return originalPage;
+    }
+
+    public void setOriginalPage(String originalPage) {
+        this.originalPage = originalPage;
     }
 }
