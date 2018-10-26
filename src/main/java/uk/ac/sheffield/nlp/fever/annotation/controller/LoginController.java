@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
+import uk.ac.sheffield.nlp.fever.annotation.Config;
 import uk.ac.sheffield.nlp.fever.annotation.auth.AuthException;
 import uk.ac.sheffield.nlp.fever.annotation.auth.ReCAPTCHAv2;
 import uk.ac.sheffield.nlp.fever.annotation.dao.AuthEmailDAO;
@@ -75,8 +76,11 @@ public class LoginController {
             return "redirect:/login/success";
         }
 
-
-        return "login/login";
+        if("closed".equals(Config.getInstance().get("closed"))) {
+            return "login/login";
+        } else {
+            return "closed";
+        }
     }
 
 

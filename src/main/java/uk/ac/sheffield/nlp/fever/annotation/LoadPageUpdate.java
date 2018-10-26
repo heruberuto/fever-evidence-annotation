@@ -17,16 +17,19 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 
 public class LoadPageUpdate {
 
-
+    static String allIds = "";
 
     public static void main(String[] args) throws IOException, TimeoutException {
 
         int i = 0;
+
+        String[] ids = Arrays.stream(allIds.split("\n")).map(String::trim).toArray(String[]::new);
 
         try (BufferedReader br = new BufferedReader(new FileReader(args[0]))) {
             String line;
@@ -37,12 +40,11 @@ public class LoadPageUpdate {
                 String id = bits[0];
                 String page = bits[1];
 
+                if (!Arrays.asList(ids).contains(id)) {
+                    continue;
+                }
 
-                System.out.println("UPDATE claim SET originalPage = \""+page+"\" WHERE originalId = "+id + " LIMIT 1;");
-
-
-
-
+                System.out.println("UPDATE claim SET originalPage = \"" + page + "\" WHERE originalId = " + id + " LIMIT 1;");
 
             }
         }
